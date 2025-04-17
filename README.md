@@ -28,7 +28,7 @@ We’ve added several useful features and commands to help you control the bot b
    - `SESSION_STRING`=1BtsOGkBu4xsJ0-hjlJkH30Iaz-1Trsdqki61DAhYZz0Dcp1wdk=
    - `SOURCE_CHAT_ID`=-1001234567890
    - `TARGET_CHAT_ID`=-1002888859999
-   - `MONGO_URI`=mongodb+srv://woodcraft:angellol@cluster0.9kgwwur.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+   - `MONGO_URI`=mongodb+srv://woodcraft:angellol@cluster0-&appName=Cluster0
    - `USER_ID`=123456789
    - `PORT`=8080
  
@@ -50,6 +50,6 @@ A small Flask server is running in the background. If you open the hosted URL, y
 -----
 ## Credits: [𝐖𝐎𝐎𝐃𝐜𝐫𝐚𝐟𝐭](https://t.me/Farooq_is_KING)
 
-    [![Contact Me On Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/Farooq_is_king)
+-  [![Contact Me On Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/Farooq_is_king)
 
 Last Edited on: `17/04/2025`
