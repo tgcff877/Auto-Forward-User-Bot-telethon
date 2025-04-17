@@ -36,7 +36,8 @@ We’ve added several useful features and commands to help you control the bot b
 
 ## Supported ⚡️ koyeb
 
-https://app.koyeb.com/deploy?type=git&repository=github.com/SudoR2spr/Auto-Forward-User-Bot&branch=master&name=master
+<a href="https://app.koyeb.com/deploy?type=git&repository=github.com/SudoR2spr/Auto-Forward-User-Bot&branch=master&name=master">
+  <img src="https://www.koyeb.com/static/images/deploy/button.svg" alt="Deploy On Koyeb">
 
 ## Deploy To Heroku
 
