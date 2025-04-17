@@ -34,6 +34,7 @@ We’ve added several useful features and commands to help you control the bot b
  
 ## Session String Generator [🔗 Telethon Session String Generat](https://colab.research.google.com/github/SudoR2spr/Telethon-Session-Generator/blob/master/Telethon%20Session%20Generator/session-op.ipynb)
 
+## Supported ⚡️ koyeb
 ## Deploy To Heroku
 
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?button-url=https://github.com/SudoR2spr/Auto-Forward-User-Bot&template=https://github.com/SudoR2spr/Auto-Forward-User-Bot)
