@@ -1,0 +1,7 @@
+aiohttp
+pymongo
+telethon
+flask
+requests
+flask-cors
+python-dotenv
