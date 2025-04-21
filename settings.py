@@ -14,7 +14,6 @@ admin_col = db["admins"]
 extra_targets_col = db["extra_targets"]
 
 # ============== Your user ID ============= #
-# DEFAULT_ADMINS = [6112735328]  Your user ID #
 DEFAULT_ADMINS = [int(x) for x in os.getenv("DEFAULT_ADMINS", "").split(",") if x.strip()]
 # ============== Your user ID ============= #
 
