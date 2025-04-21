@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import asyncio
 import threading
 from flask import Flask
-from telethon import Telegramwoodcraft, events
+from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telethon.errors import FloodWaitError
 from pymongo import MongoClient
@@ -20,7 +20,7 @@ SOURCE_CHAT_ID = int(os.getenv("SOURCE_CHAT_ID"))
 PORT = int(os.getenv("PORT", 8080))
 # ===== WOODcraft ==== SudoR2spr ==== #
 
-woodcraft = Telegramwoodcraft(StringSession(SESSION_STRING), API_ID, API_HASH)
+woodcraft = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 app = Flask(__name__)
 forwarding_enabled = True
 
