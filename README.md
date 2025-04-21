@@ -17,9 +17,41 @@ We’ve added several useful features and commands to help you control the bot b
 4. Status Check  
    See bot’s current status, `Active ✅`, and `inactive` ❌ `/status`.
 
-5. Start / Stop Forwarding  
-   - `/on` → Start auto forwarding  
-   - `/off` → Stop auto forwarding
+5. 👉  All commands list 🌟 
+  
+       ``` /status 
+        ⚡️ View bot status  
+
+        /setdelay [Sec] 
+        ⏱️ Set the delay time.
+   
+        /addadmin
+        ✅ User 1213456789 added as admin.
+
+        /removeadmin
+        ❌ User 1213456789 removed from admins.
+   
+        /skip 
+        🛹 Skip to next message  
+
+        /resume 
+        🏹 Start forwarding  
+
+        /on 
+        ✅ Launch the bot   
+
+        /off 
+        📴 Close the bot 
+
+        /addtarget [ID] 
+        ✅ Add target  
+
+        /removetarget [ID] 
+        😡 Remove target  
+
+        /listtargets 
+        🆔 View Target ID```
+
 
 ### 🚀 Deployment  
 **Set environment variables**
@@ -29,8 +61,9 @@ We’ve added several useful features and commands to help you control the bot b
    - `SOURCE_CHAT_ID`=-1001234567890
    - `TARGET_CHAT_ID`=-1002888859999
    - `MONGO_URI`=mongodb+srv://woodcraft:angellol@cluster0-&appName=Cluster0
-   - `USER_ID`=123456789
+   - `DEFAULT_ADMINS`=123456789
    - `PORT`=8080
+
  
 ## Session String Generator [🔗 Telethon Session String Generat](https://colab.research.google.com/github/SudoR2spr/Telethon-Session-Generator/blob/master/Telethon%20Session%20Generator/session-op.ipynb)
 
