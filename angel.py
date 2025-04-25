@@ -6,40 +6,29 @@ from flask import Flask
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telethon.errors import FloodWaitError
-from pymongo import MongoClient
-from pymongo.errors import DuplicateKeyError
 from settings import setup_extra_handlers, load_initial_settings, is_admin, DEFAULT_ADMINS
 from settings import get_all_target_channels, add_target_channel, remove_target_channel
+from angel_db import is_forwarded_for_target, mark_as_forwarded_for_target
+from angel_db import collection
 
 load_dotenv()
 # ===== WOODcraft ==== SudoR2spr ==== #
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 SESSION_STRING = os.getenv("SESSION_STRING")
+STATUS_URL = os.getenv("STATUS_URL")
 SOURCE_CHAT_ID = int(os.getenv("SOURCE_CHAT_ID"))
 PORT = int(os.getenv("PORT", 8080))
 # ===== WOODcraft ==== SudoR2spr ==== #
 
+# ===== WOODcraft ==== SudoR2spr ==== #
 woodcraft = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
+woodcraft.delay_seconds = 5
+woodcraft.skip_next_message = False
 app = Flask(__name__)
 forwarding_enabled = True
 
-## === MongoDB সেটআপ === WOODcraft ==== SudoR2spr ==== # 
-MONGO_URI = os.getenv("MONGO_URI")
-mongo_client = MongoClient(MONGO_URI)
-db = mongo_client["forwardBot"]
-collection = db["forwarded_files"]
-collection.create_index([("message_id", 1), ("target_id", 1)], unique=True)
-
-async def is_forwarded_for_target(msg_id, target_id):
-    return collection.find_one({"message_id": msg_id, "target_id": target_id}) is not None
-
-async def mark_as_forwarded_for_target(msg_id, target_id):
-    try:
-        collection.insert_one({"message_id": msg_id, "target_id": target_id})
-    except DuplicateKeyError:
-        pass
-
+# ===== WOODcraft ==== SudoR2spr ==== #
 async def send_without_tag(original_msg):
     try:
         targets = await get_all_target_channels()
@@ -129,8 +118,23 @@ async def status(event):
     if not is_admin(event.sender_id):
         await event.reply("❌ No permission!")
         return
-    status = "Active ✅" if forwarding_enabled else "inactive ❌"
-    await event.reply(f"◉ Status: {status}\n◉ Dealy: {woodcraft.delay_seconds}s\n◉ Skip: {woodcraft.skip_next_message}")
+
+    status = "Active ✅" if forwarding_enabled else "Inactive ❌"
+    total_forwarded_files = collection.count_documents({})
+
+    caption = (
+        f"◉ Total Forwarded Files: `{total_forwarded_files}`\n"
+        f"◉ Status: {status}\n"
+        f"◉ Delay: {woodcraft.delay_seconds}s\n"
+        f"◉ Skip: {woodcraft.skip_next_message}\n\n"
+        f"❖ 𝐖𝐎𝐎𝐃𝐜𝐫𝐚𝐟𝐭 ❖"
+    )
+
+    await woodcraft.send_file(
+        event.chat_id,
+        file=STATUS_URL,
+        caption=caption
+    )
 
 @woodcraft.on(events.NewMessage(pattern=r'^/off$'))
 async def off_handler(event):
@@ -171,6 +175,11 @@ async def list_targets_handler(event):
     targets = await get_all_target_channels()
     msg = "**🎯 Target channel:**\n" + "\n".join(f"`{tid}`" for tid in targets) if targets else "No target!"
     await event.reply(msg)
+
+@woodcraft.on(events.NewMessage(pattern=r'^/count$'))
+async def count_handler(event):
+    total = collection.count_documents({})
+    await event.reply(f"📊 Total Forwarded Files: `{total}`")
 
 @woodcraft.on(events.NewMessage(chats=SOURCE_CHAT_ID))
 async def new_message_handler(event):
