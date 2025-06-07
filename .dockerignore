@@ -1,0 +1,51 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Unit test / coverage
+*.cover
+.coverage
+coverage.xml
+.cache
+nosetests.xml
+test-results/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+ENV/
+
+# Logs and local databases
+*.log
+*.sqlite3
+*.db
+
+# Environment variables
+.env
+.env.*
+
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# Docker build files
+Dockerfile
+.dockerignore
+
+# Node (if accidentally present)
+node_modules/
+npm-debug.log
